@@ -82,7 +82,7 @@ $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="team-grid">
                 <?php foreach ($teams as $team): ?>
                 <a class="team-card" href="team.php?id=<?php echo $team['team_id']; ?>">
-                    <img src="get_team_logo.php?id=<?php echo $team['team_id']; ?>" alt="<?php echo htmlspecialchars($team['team_name']); ?>">
+                    <img src="<?php echo htmlspecialchars($team['team_logo']); ?>" alt="<?php echo htmlspecialchars($team['team_name']); ?>">
                     <h3><?php echo htmlspecialchars($team['team_name']); ?></h3>
                 </a>
                 <?php endforeach; ?>
@@ -93,7 +93,7 @@ $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h2>Recent Matches</h2>
             <div class="matches-list">
                 <?php foreach ($matches as $match): 
-                    $stmt = $pdo->prepare("SELECT team_name FROM teams WHERE team_id = ?");
+                    $stmt = $pdo->prepare("SELECT team_name, team_logo FROM teams WHERE team_id = ?");
                     $stmt->execute([$match['team1_id']]);
                     $team1 = $stmt->fetch(PDO::FETCH_ASSOC);
                     $stmt->execute([$match['team2_id']]);
@@ -102,12 +102,12 @@ $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="match-card">
                     <div class="match-teams">
                         <div class="team">
-                            <img src="get_team_logo.php?id=<?php echo $match['team1_id']; ?>" alt="<?php echo htmlspecialchars($team1['team_name']); ?>">
+                            <img src="<?php echo htmlspecialchars($team1['team_logo']); ?>" alt="<?php echo htmlspecialchars($team1['team_name']); ?>">
                             <span><?php echo htmlspecialchars($team1['team_name']); ?></span>
                         </div>
                         <div class="score"><?php echo $match['team1_score']; ?> - <?php echo $match['team2_score']; ?></div>
                         <div class="team">
-                            <img src="get_team_logo.php?id=<?php echo $match['team2_id']; ?>" alt="<?php echo htmlspecialchars($team2['team_name']); ?>">
+                            <img src="<?php echo htmlspecialchars($team2['team_logo']); ?>" alt="<?php echo htmlspecialchars($team2['team_name']); ?>">
                             <span><?php echo htmlspecialchars($team2['team_name']); ?></span>
                         </div>
                     </div>
@@ -133,7 +133,7 @@ $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         $current_round = $match['round_name'];
                     endif;
                     
-                    $stmt = $pdo->prepare("SELECT team_name FROM teams WHERE team_id = ?");
+                    $stmt = $pdo->prepare("SELECT team_name, team_logo FROM teams WHERE team_id = ?");
                     $stmt->execute([$match['team1_id']]);
                     $team1 = $stmt->fetch(PDO::FETCH_ASSOC);
                     $stmt->execute([$match['team2_id']]);
@@ -141,12 +141,12 @@ $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <div class="match">
                     <div class="team <?php echo $match['winner_id'] == $match['team1_id'] ? 'winner' : ''; ?>">
-                        <img src="get_team_logo.php?id=<?php echo $match['team1_id']; ?>" alt="<?php echo htmlspecialchars($team1['team_name']); ?>">
+                        <img src="<?php echo htmlspecialchars($team1['team_logo']); ?>" alt="<?php echo htmlspecialchars($team1['team_name']); ?>">
                         <?php echo htmlspecialchars($team1['team_name']); ?>
                         <span class="score"><?php echo $match['team1_score']; ?></span>
                     </div>
                     <div class="team <?php echo $match['winner_id'] == $match['team2_id'] ? 'winner' : ''; ?>">
-                        <img src="get_team_logo.php?id=<?php echo $match['team2_id']; ?>" alt="<?php echo htmlspecialchars($team2['team_name']); ?>">
+                        <img src="<?php echo htmlspecialchars($team2['team_logo']); ?>" alt="<?php echo htmlspecialchars($team2['team_name']); ?>">
                         <?php echo htmlspecialchars($team2['team_name']); ?>
                         <span class="score"><?php echo $match['team2_score']; ?></span>
                     </div>

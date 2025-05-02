@@ -1,22 +1,31 @@
 <?php
 require_once 'config/database.php';
 
-// Get tournament details
-$tournament_id = 1; // Assuming we're viewing PGL Major Copenhagen 2024
+// Get tournament ID from URL parameter
+$tournament_id = isset($_GET['id']) ? (int)$_GET['id'] : 1;
+
+// Get tournament details for the selected tournament
 $stmt = $pdo->prepare("SELECT * FROM tournaments WHERE tournament_id = ?");
 $stmt->execute([$tournament_id]);
 $tournament = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Get all teams
-$stmt = $pdo->query("SELECT * FROM teams");
+// Get teams that participated in this tournament
+$stmt = $pdo->prepare("
+    SELECT DISTINCT t.* 
+    FROM teams t
+    JOIN tournament_bracket tb ON t.team_id = tb.team1_id OR t.team_id = tb.team2_id
+    WHERE tb.tournament_id = ?
+    ORDER BY t.team_name
+");
+$stmt->execute([$tournament_id]);
 $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Get tournament bracket
+// Get tournament bracket for the selected tournament
 $stmt = $pdo->prepare("SELECT * FROM tournament_bracket WHERE tournament_id = ? ORDER BY match_order");
 $stmt->execute([$tournament_id]);
 $bracket = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Get matches
+// Get matches for the selected tournament
 $stmt = $pdo->prepare("SELECT * FROM matches WHERE tournament_id = ? ORDER BY match_date");
 $stmt->execute([$tournament_id]);
 $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);

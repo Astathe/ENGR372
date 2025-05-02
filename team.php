@@ -50,13 +50,10 @@ $tournament_history = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="wallpaper" style="background-image: url('images/tms1.jpeg');"></div>
     <nav class="top-bar">
         <div class="logo">
-            <a href="#">My Website</a>
+            <a href="/index.php">My Website</a>
         </div>
         <ul class="nav-links">
             <li><a href="/index.php" class="active">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
         </ul>
         <div class="mobile-menu">
             <span></span>
@@ -132,9 +129,6 @@ $tournament_history = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <ul class="nav-links">
                 <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
             </ul>
         </div>
         <div class="footer-bottom">

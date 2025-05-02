@@ -166,4 +166,45 @@ INSERT INTO matches (tournament_id, round, match_date, team1_id, team2_id, team1
 (1, 'Quarter Finals', '2024-03-28 21:55:00', 7, 8, 2, 0, 7),
 (1, 'Semi Finals', '2024-03-29 21:55:00', 2, 3, 2, 1, 2),
 (1, 'Semi Finals', '2024-03-29 21:55:00', 6, 7, 2, 1, 6),
-(1, 'Grand Final', '2024-03-30 21:55:00', 2, 6, 1, 2, 6); 
+(1, 'Grand Final', '2024-03-30 21:55:00', 2, 6, 1, 2, 6);
+
+-- Insert ELEAGUE Major Atlanta 2017 tournament
+INSERT INTO tournaments (tournament_name, tournament_logo, total_prize_pool, first_place_prize, second_place_prize, third_place_prize, format, caster1_name, caster2_name) 
+VALUES ('ELEAGUE Major Atlanta 2017', './images/eleague2017.png', 1000000.00, 500000.00, 150000.00, 70000.00, 'Single Elimination', 'Anders Blume', 'Auguste Massonnat');
+
+-- Insert teams for ELEAGUE Major Atlanta 2017
+INSERT INTO teams (team_name, team_logo) VALUES
+('Astralis', './images/astralis.png'),
+('Virtus.pro', './images/virtuspro.png'),
+('SK Gaming', './images/sk.png'),
+('North', './images/north.png'),
+('Natus Vincere', './images/navi.png'),
+('FaZe Clan', './images/faze.png'),
+('Gambit Esports', './images/gambit.png'),
+('Fnatic', './images/fnatic.png');
+
+-- Insert tournament bracket data for ELEAGUE Major Atlanta 2017
+INSERT INTO tournament_bracket (tournament_id, round_name, match_order, team1_id, team2_id, team1_score, team2_score, winner_id, next_round_match_order) VALUES
+-- Quarter Finals
+(2, 'Quarter Finals', 1, 9, 16, 1, 0, 9, 5),    -- Astralis vs Fnatic
+(2, 'Quarter Finals', 2, 10, 15, 1, 0, 10, 5),  -- Virtus.pro vs Gambit
+(2, 'Quarter Finals', 3, 11, 14, 1, 0, 11, 6),  -- SK Gaming vs FaZe
+(2, 'Quarter Finals', 4, 12, 13, 1, 0, 12, 6),  -- North vs NaVi
+-- Semi Finals
+(2, 'Semi Finals', 5, 9, 10, 1, 0, 9, 7),       -- Astralis vs Virtus.pro
+(2, 'Semi Finals', 6, 11, 12, 1, 0, 11, 7),     -- SK Gaming vs North
+-- Grand Final
+(2, 'Grand Final', 7, 9, 11, 1, 0, 9, NULL);    -- Astralis vs SK Gaming
+
+-- Insert match results for ELEAGUE Major Atlanta 2017
+INSERT INTO matches (tournament_id, round, match_date, team1_id, team2_id, team1_score, team2_score, winner_id) VALUES
+-- Quarter Finals
+(2, 'Quarter Finals', '2017-01-27 15:00:00', 9, 16, 16, 8, 9),    -- Astralis vs Fnatic
+(2, 'Quarter Finals', '2017-01-27 18:00:00', 10, 15, 16, 14, 10), -- Virtus.pro vs Gambit
+(2, 'Quarter Finals', '2017-01-28 15:00:00', 11, 14, 16, 10, 11), -- SK Gaming vs FaZe
+(2, 'Quarter Finals', '2017-01-28 18:00:00', 12, 13, 16, 14, 12), -- North vs NaVi
+-- Semi Finals
+(2, 'Semi Finals', '2017-01-29 15:00:00', 9, 10, 16, 8, 9),      -- Astralis vs Virtus.pro
+(2, 'Semi Finals', '2017-01-29 18:00:00', 11, 12, 16, 14, 11),   -- SK Gaming vs North
+-- Grand Final
+(2, 'Grand Final', '2017-01-29 21:00:00', 9, 11, 16, 12, 9);     -- Astralis vs SK Gaming

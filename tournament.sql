@@ -73,8 +73,8 @@ CREATE TABLE matches (
 );
 
 -- Insert sample data for PGL Major Copenhagen 2024
-INSERT INTO tournaments (tournament_name, total_prize_pool, first_place_prize, second_place_prize, third_place_prize, format, caster1_name, caster2_name) 
-VALUES ('PGL Major Copenhagen 2024', 1250000.00, 500000.00, 175000.00, 80000.00, 'Single Elimination', 'Richard Lewis', 'Eefje Depoortere');
+INSERT INTO tournaments (tournament_name, tournament_logo, total_prize_pool, first_place_prize, second_place_prize, third_place_prize, format, caster1_name, caster2_name) 
+VALUES ('PGL Major Copenhagen 2024', './images/tournament-logo1.png', 1250000.00, 500000.00, 175000.00, 80000.00, 'Single Elimination', 'Richard Lewis', 'Eefje Depoortere');
 
 -- Insert sample teams with logo paths
 INSERT INTO teams (team_name, team_logo) VALUES

@@ -6,4 +6,4 @@ Run local Apache an MySQL server. <br />
 Run tournament.sql code at SQL editor to create and fill the database. <br />
 <br />
 CURRENT ISSUES: <br />
--Images comes corrupted from database. <br />
+-Wrong tournament history at team.php. <br />

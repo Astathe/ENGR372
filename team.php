@@ -41,7 +41,7 @@ $tournament_history = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($team['team_name']); ?> - Team Profile</title>
+    <title><?php echo htmlspecialchars($team['team_name']); ?> - Solidpedia</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="script.js" defer></script>
@@ -50,7 +50,7 @@ $tournament_history = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="wallpaper" style="background-image: url('images/tms1.jpeg');"></div>
     <nav class="top-bar">
         <div class="logo">
-            <a href="/index.php">My Website</a>
+            <a href="/index.php">Solidpedia</a>
         </div>
         <ul class="nav-links">
             <li><a href="/index.php" class="active">Home</a></li>
@@ -125,14 +125,14 @@ $tournament_history = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <footer class="footer">
         <div class="footer-content">
             <div class="logo">
-                <a href="#">My Website</a>
+                <a href="#">Solidpedia</a>
             </div>
             <ul class="nav-links">
                 <li><a href="#" class="active">Home</a></li>
             </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 My Website. All rights reserved.</p>
+            <p>&copy; 2024 Solidpedia. All rights reserved.</p>
         </div>
     </footer>
 </body>

@@ -6,7 +6,7 @@ USE tournament_db;
 CREATE TABLE teams (
     team_id INT PRIMARY KEY AUTO_INCREMENT,
     team_name VARCHAR(100) NOT NULL,
-    team_logo VARCHAR(255),
+    team_logo LONGBLOB
 );
 
 -- Players table
@@ -34,7 +34,7 @@ CREATE TABLE tournaments (
     start_date DATE,
     end_date DATE,
     caster1_name VARCHAR(100),
-    caster2_name VARCHAR(100),
+    caster2_name VARCHAR(100)
 );
 
 -- Tournament Bracket table
@@ -76,16 +76,16 @@ CREATE TABLE matches (
 INSERT INTO tournaments (tournament_name, total_prize_pool, first_place_prize, second_place_prize, third_place_prize, format, caster1_name, caster2_name) 
 VALUES ('PGL Major Copenhagen 2024', 1250000.00, 500000.00, 175000.00, 80000.00, 'Single Elimination', 'Richard Lewis', 'Eefje Depoortere');
 
--- Insert sample teams
-INSERT INTO teams (team_name) VALUES
-('Team Spirit'),
-('FaZe Clan'),
-('Team Vitality'),
-('Cloud9'),
-('Eternal Fire'),
-('Natus Vincere'),
-('G2 Esports'),
-('MOUZ');
+-- Insert sample teams with logos
+INSERT INTO teams (team_name, team_logo) VALUES
+('Team Spirit', LOAD_FILE('C:/xampp/htdocs/images/teams/spirit.png')),
+('FaZe Clan', LOAD_FILE('C:/xampp/htdocs/images/teams/faze.png')),
+('Team Vitality', LOAD_FILE('C:/xampp/htdocs/images/teams/vitality.png')),
+('Cloud9', LOAD_FILE('C:/xampp/htdocs/images/teams/cloud9.png')),
+('Eternal Fire', LOAD_FILE('C:/xampp/htdocs/images/teams/eternalfire.png')),
+('Natus Vincere', LOAD_FILE('C:/xampp/htdocs/images/teams/navi.png')),
+('G2 Esports', LOAD_FILE('C:/xampp/htdocs/images/teams/g2.png')),
+('MOUZ', LOAD_FILE('C:/xampp/htdocs/images/teams/mouz.png'));
 
 -- Insert sample players
 INSERT INTO players (team_id, player_name, player_nickname, player_role, player_country) VALUES

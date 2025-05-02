@@ -5,28 +5,20 @@ require_once 'config/database.php';
 $team_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 if ($team_id > 0) {
-    // Retrieve image from database
-$sql = "SELECT image_data, image_type FROM images WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $image_id);
-$stmt->execute();
-$stmt->store_result();
-$stmt->bind_result($image_data, $image_type);
-
-if ($stmt->num_rows > 0) {
-    $stmt->fetch();
+    // Get team logo from database
+    $stmt = $pdo->prepare("SELECT team_logo FROM teams WHERE team_id = ?");
+    $stmt->execute([$team_id]);
+    $logo = $stmt->fetchColumn();
     
-    // Set the correct content type header
-    header("Content-Type: " . $image_type);
-    
-    // Output the image data
-    echo $image_data;
-} else {
-    // Image not found
-    header("HTTP/1.0 404 Not Found");
-    echo "Image not found";
-}
+    if ($logo) {
+        // Set appropriate headers
+        header('Content-Type: image/png');
+        header('Content-Length: ' . strlen($logo));
+        
+        // Output the image data
+        echo $logo;
         exit;
+    }
 }
 
 // If no image found, output a default image or error

@@ -2,7 +2,7 @@
 require_once 'config/database.php';
 
 // Get all tournaments
-$stmt = $pdo->query("SELECT * FROM tournaments");
+$stmt = $pdo->query("SELECT * FROM tournaments ORDER BY tournament_id DESC");
 $tournaments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
